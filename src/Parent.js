@@ -6,10 +6,19 @@ function Parent() {
   const randomColor = getRandomColor();
   const [color, setColor] = useState(randomColor);
 
+  //Create a variable to change color for children using state
+  const [childrenColor, setChildrenColor] = useState("#FFF")
+
+  function hadleChangeColor(newChildrenColor) {
+    const newRandomColor = getRandomColor();
+    setColor(newRandomColor)
+    setChildrenColor(newChildrenColor)
+  }
+
   return (
     <div className="parent" style={{ backgroundColor: color }}>
-      <Child />
-      <Child />
+      <Child onChangeColor={hadleChangeColor} color={childrenColor}/>
+      <Child onChangeColor={hadleChangeColor} color={childrenColor}/>
     </div>
   );
 }
